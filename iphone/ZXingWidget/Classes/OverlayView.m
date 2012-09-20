@@ -173,7 +173,7 @@ static const CGFloat kLicenseButtonPadding = 10;
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
   if (displayedMessage == nil) {
-    self.displayedMessage = NSLocalizedStringWithDefaultValue(@"OverlayView displayed message", nil, [NSBundle mainBundle], @"Place a barcode inside the viewfinder rectangle to scan it.", @"Place a barcode inside the viewfinder rectangle to scan it.");
+    self.displayedMessage = NSLocalizedStringWithDefaultValue(@"OverlayView displayed message", nil, [NSBundle mainBundle], @"Center your QR Code below.", @"Center your QR Code below.");
   }
 	CGContextRef c = UIGraphicsGetCurrentContext();
   
@@ -200,10 +200,10 @@ static const CGFloat kLicenseButtonPadding = 10;
         [text drawAtPoint:textPoint withFont:helvetica15];
 	}
 	else {
-    UIFont *font = [UIFont systemFontOfSize:18];
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
     CGSize constraint = CGSizeMake(rect.size.width  - 2 * kTextMargin, cropRect.origin.y);
     CGSize displaySize = [self.displayedMessage sizeWithFont:font constrainedToSize:constraint];
-    CGRect displayRect = CGRectMake((rect.size.width - displaySize.width) / 2 , cropRect.origin.y - displaySize.height, displaySize.width, displaySize.height);
+    CGRect displayRect = CGRectMake((rect.size.width - displaySize.width) / 2 , cropRect.origin.y - displaySize.height - 5.0, displaySize.width, displaySize.height);
     [self.displayedMessage drawInRect:displayRect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
 	}
 	CGContextRestoreGState(c);

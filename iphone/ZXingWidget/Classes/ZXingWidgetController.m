@@ -66,14 +66,14 @@
     [self setDelegate:scanDelegate];
     self.oneDMode = shouldUseoOneDMode;
     self.showCancel = shouldShowCancel;
-    self.showLicense = shouldShowLicense;
+    self.showLicense = NO;
     self.wantsFullScreenLayout = YES;
     beepSound = -1;
     decoding = NO;
     OverlayView *theOverLayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds 
                                                        cancelEnabled:showCancel 
                                                             oneDMode:oneDMode
-                                                         showLicense:shouldShowLicense];
+                                                         showLicense:NO];
     [theOverLayView setDelegate:self];
     self.overlayView = theOverLayView;
     [theOverLayView release];
